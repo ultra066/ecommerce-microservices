@@ -1,0 +1,226 @@
+:root {
+  --rolex-green: #006039;
+  --rolex-gold: #cfa86d;
+  --bg-dark: #0a0a0a;
+  --card-bg: #141414;
+  --text-main: #f5f5f5;
+  --text-muted: #888888;
+}
+
+/* Reset and Full Screen Base */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.full-screen {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.brand-title {
+  font-family: 'Times New Roman', serif;
+  color: var(--rolex-gold);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  font-size: 2.5em;
+}
+
+.brand-title-small {
+  font-family: 'Times New Roman', serif;
+  color: var(--rolex-gold);
+  letter-spacing: 4px;
+  margin: 0;
+  font-size: 1.5em;
+}
+
+/* Authentication Screen */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  background: var(--card-bg);
+  padding: 50px;
+  border-radius: 8px;
+  border: 1px solid #222;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.auth-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-message {
+  color: var(--rolex-gold);
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+.toggle-auth-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  text-decoration: underline;
+}
+
+.toggle-auth-btn:hover { color: white; }
+
+/* Store Header */
+.store-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.store-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background: #111;
+  border-bottom: 1px solid #222;
+}
+
+.header-controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.store-content {
+  padding: 40px 5%;
+  flex-grow: 1;
+}
+
+/* Inputs & Buttons */
+input {
+  padding: 14px;
+  background: #0d0d0d;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+input:focus { outline: 1px solid var(--rolex-gold); }
+
+.btn-gold {
+  background: var(--rolex-gold);
+  color: black;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: opacity 0.2s;
+}
+
+.btn-gold:hover { opacity: 0.8; }
+
+.btn-outline-small {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid #444;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.btn-outline-small:hover { border-color: var(--rolex-gold); color: var(--rolex-gold); }
+
+.block-btn { width: 100%; margin-top: 10px; }
+.btn-delete { background: #5a1a1a; color: white; border: none; padding: 12px; cursor: pointer; font-weight: bold; border-radius: 4px; }
+.btn-delete:hover { background: #802020; }
+
+/* Admin Form */
+.admin-form {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--rolex-gold);
+  margin-bottom: 40px;
+}
+
+.admin-form h3 { margin-top: 0; color: var(--rolex-gold); }
+.admin-inputs {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.admin-inputs > * { flex: 1; min-width: 200px; }
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.product-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #222;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: #444;
+}
+
+.product-card h3 { margin: 0 0 10px 0; font-size: 1.5em; }
+.desc { color: var(--text-muted); height: 50px; line-height: 1.4; }
+.price { font-size: 1.3em; font-weight: bold; color: var(--rolex-gold); margin: 20px 0; }
+
+/* History List */
+.history-container h2 { border-bottom: 1px solid #222; padding-bottom: 15px; }
+.history-card {
+  background: var(--card-bg);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  border-left: 4px solid var(--rolex-gold);
+}
+
+.history-card h4 { margin: 0 0 5px 0; font-size: 1.2em; }
+.order-id { margin: 0; font-size: 0.85em; color: var(--text-muted); }
+.status-badge { background: var(--rolex-green); padding: 5px 10px; border-radius: 4px; font-size: 0.85em; font-weight: bold; }
+.order-qty { margin: 10px 0 0 0; font-size: 0.9em; color: var(--text-muted); }
+
+.status-banner {
+  background: var(--rolex-green);
+  color: white;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+}

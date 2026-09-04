@@ -1,0 +1,29 @@
+services:
+  redis-broker:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  order-api:
+    build: ./order-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001 # (Keep this line only for the order-api block)
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+    depends_on:
+      - redis-broker
+
+  inventory-worker:
+    build: ./inventory-service
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+    depends_on:
+      - redis-broker
+      
+  notification-worker:
+    build: ./notification-service
+    depends_on:
+      - redis-broker
