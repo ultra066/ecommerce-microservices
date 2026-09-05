@@ -2,9 +2,6 @@
 
 A fully decoupled, cloud-native e-commerce platform demonstrating secure microservices, asynchronous message brokering, and zero-trust security principles. This project separates frontend presentation, API routing, and background processing into isolated infrastructure components to ensure high availability and robust security.
 
-**Author:** Harold Vonn A. Ultra  
-**Contact:** vonnultra@gmail.com  
-
 ---
 
 ## Architecture Overview
