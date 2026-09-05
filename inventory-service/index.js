@@ -1,5 +1,13 @@
+const express = require('express');
 const { createClient } = require('redis');
 const { createClient: createSupabaseClient } = require('@supabase/supabase-js');
+
+// Initialize a lightweight Express app to satisfy Render's port scan
+const app = express();
+const PORT = process.env.PORT || 10000;
+
+app.get('/', (req, res) => res.status(200).send('Inventory Worker is active'));
+app.listen(PORT, () => console.log(`Health check server listening on port ${PORT}`));
 
 // 1. Initialize Supabase Client
 const supabaseUrl = process.env.SUPABASE_URL;
