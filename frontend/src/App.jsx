@@ -113,14 +113,15 @@ function App() {
   const handleBuy = async (productId) => {
     setOrderStatus('Processing secure transaction...');
     try {
-      const response = await fetch('http://localhost:3001/api/orders', {
+      // Use the live Render URL if deployed, otherwise fallback to local testing
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
+      const response = await fetch(`${apiUrl}/api/orders`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          // Inject the JWT into the Authorization header
           'Authorization': `Bearer ${session.access_token}` 
         },
-        // The backend will determine the user ID from the token, not the body
         body: JSON.stringify({ productId, quantity: 1 }),
       });
       const result = await response.json();
@@ -227,4 +228,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

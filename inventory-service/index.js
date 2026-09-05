@@ -6,9 +6,9 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const supabase = createSupabaseClient(supabaseUrl, supabaseKey);
 
-// 2. Initialize Redis Subscriber
+// 2. Initialize Redis Subscriber (Updated for Cloud/Render)
 const subscriber = createClient({
-    url: 'redis://redis-broker:6379'
+    url: process.env.REDIS_URL || 'redis://redis-broker:6379'
 });
 
 subscriber.on('error', (err) => console.error('Redis Error', err));

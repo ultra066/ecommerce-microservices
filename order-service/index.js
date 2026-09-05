@@ -13,7 +13,10 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const supabase = createSupabaseClient(supabaseUrl, supabaseKey);
 
-const publisher = createRedisClient({ url: 'redis://redis-broker:6379' });
+// Updated for Cloud/Render
+const publisher = createRedisClient({ 
+    url: process.env.REDIS_URL || 'redis://redis-broker:6379' 
+});
 publisher.on('error', (err) => console.log('Redis Error', err));
 publisher.connect().then(() => console.log('Connected to Redis Broker'));
 
@@ -77,4 +80,4 @@ app.post('/api/orders', authenticateToken, async (req, res) => {
     }
 });
 
-app.listen(PORT, () => console.log(`Order Service listening on port ${PORT}`)); 
+app.listen(PORT, () => console.log(`Order Service listening on port ${PORT}`));
