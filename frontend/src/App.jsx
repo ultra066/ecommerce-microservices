@@ -115,12 +115,20 @@ function App() {
     try {
       const response = await fetch('http://localhost:3001/api/orders', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId, quantity: 1, userId: session.user.id }),
+        headers: { 
+          'Content-Type': 'application/json',
+          // Inject the JWT into the Authorization header
+          'Authorization': `Bearer ${session.access_token}` 
+        },
+        // The backend will determine the user ID from the token, not the body
+        body: JSON.stringify({ productId, quantity: 1 }),
       });
       const result = await response.json();
-      if (response.ok) setOrderStatus(`Order Confirmed. Reference: ${result.order.id.split('-')[0]}`);
-      else setOrderStatus('Transaction declined.');
+      if (response.ok) {
+        setOrderStatus(`Order Confirmed. Reference: ${result.order.id.split('-')[0]}`);
+      } else {
+        setOrderStatus(`Transaction declined: ${result.error}`);
+      }
     } catch (error) {
       setOrderStatus('Connection to secure server failed.');
     }
